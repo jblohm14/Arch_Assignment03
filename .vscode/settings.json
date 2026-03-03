@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "*.h": "cpp",
+        "*.hpp": "cpp",
+        "*.hh": "cpp",
+        "*.hxx": "cpp",
+        "*.cc": "cpp",
+        "*.cpp": "cpp",
+        "*.cxx": "cpp"
+    },
+    "files.eol": "\n",
+    "C_Cpp.autoAddFileAssociations": false,
+    "C_Cpp.default.compilerPath": "/usr/bin/g++",
+    "editor.formatOnSave": true,
+    "clang-format.executable": "/usr/bin/clang-format",
+    "cmake.cmakePath": "/usr/local/bin/cmake"
+}

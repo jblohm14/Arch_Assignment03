@@ -1,0 +1,67 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 24,
+        "patch": 2
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/${presetName}/.cmake",
+            "cacheVariables": {
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/${presetName}/bin",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/${presetName}/lib"
+            }
+        },
+        {
+            "name": "x86_64-linux",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "x86_64-linux",
+            "configurePreset": "x86_64-linux",
+            "targets": [
+                "tests"
+            ]
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "unit-tests",
+            "configurePreset": "x86_64-linux",
+            "output": {
+                "outputOnFailure": true,
+                "verbosity": "verbose"
+            },
+            "execution": {
+                "stopOnFailure": true
+            },
+            "inheritConfigureEnvironment": true
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "assignment3",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "x86_64-linux"
+                },
+                {
+                    "type": "build",
+                    "name": "x86_64-linux"
+                }
+            ]
+        }
+    ]
+}
