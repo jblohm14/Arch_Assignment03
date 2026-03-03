@@ -15,7 +15,6 @@ using ::testing::Return;
 class CartTest : public ::testing::Test {
   protected:
     
-    
     void SetUp() override {
         std::cout << "Setting up test fixture" << std::endl;
     }
@@ -31,6 +30,7 @@ class CartTest : public ::testing::Test {
 TEST_F(CartTest, grocery_list) {
     Cart cart;
 
+    // test case participants
     Item Apple("0", "Apple", 2);
     Item Banana("1", "Banana", 3);
     Item Grapes("2", "Grapes", 2);
@@ -44,6 +44,7 @@ TEST_F(CartTest, grocery_list) {
 
     Mock_ItemService service;
 
+    // Assert a price return for various inputs to getPrice()
     EXPECT_CALL(service, getPrice(Apple)).WillOnce(Return(1.29));
     EXPECT_CALL(service, getPrice(Banana)).WillOnce(Return(5.99));
     EXPECT_CALL(service, getPrice(Grapes)).WillOnce(Return(1.75));
@@ -54,6 +55,7 @@ TEST_F(CartTest, grocery_list) {
     cart.setItemService(&service);
     cart.setItems(items);
 
+    // EXPECT a result with precision suitable for type DOUBLE
     EXPECT_DOUBLE_EQ(cart.getCartTotalAmount(), 68.11);
 }
 
@@ -98,6 +100,7 @@ TEST_F(CartTest, pc_list) {
 TEST_F(CartTest, wardrobe_list) {
     Cart cart;
 
+    // test case participants
     Item socks("20", "socks", 12);
     Item shoes("21", "shoes", 15);
     Item hat("22", "hat", 7);
@@ -112,6 +115,8 @@ TEST_F(CartTest, wardrobe_list) {
     };
 
     Mock_ItemService service;
+
+    // Assert a price return for various inputs to getPrice()
     EXPECT_CALL(service, getPrice(socks)).WillOnce(Return(5.00));
     EXPECT_CALL(service, getPrice(shoes)).WillOnce(Return(100.00));
     EXPECT_CALL(service, getPrice(hat)).WillOnce(Return(21.99));
@@ -123,5 +128,7 @@ TEST_F(CartTest, wardrobe_list) {
 
     cart.setItemService(&service);
     cart.setItems(items);
+    
+    // EXPECT a result with precision suitable for type DOUBLE
     EXPECT_DOUBLE_EQ(cart.getCartTotalAmount(), 2911.00);
 }
