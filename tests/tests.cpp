@@ -10,22 +10,31 @@ using ::testing::Return;
 
 /**
  * @brief Test Fixture for the Cart Test Suite
- * 
+ *
  */
 class CartTest : public ::testing::Test {
   protected:
-    
+    /**
+     * @brief Specific logic require to setup this test fixture
+     *  For this assignment only a print statement is sufficient
+     *
+     */
     void SetUp() override {
         std::cout << "Setting up test fixture" << std::endl;
     }
 
+    /**
+     * @brief Specific logic require to tear down this test fixture
+     *  For this assignment only a print statement is sufficient
+     *
+     */
     void TearDown() override {
         std::cout << "Tearing down test fixture" << std::endl;
     }
 };
 
 /**
- * @brief Test Case: Grocery List using CartTest fixrure
+ * @brief Test Case 1: Grocery List using CartTest fixture
  */
 TEST_F(CartTest, grocery_list) {
     Cart cart;
@@ -60,7 +69,7 @@ TEST_F(CartTest, grocery_list) {
 }
 
 /**
- * @brief Test Case: PC List using CartTest fixrure
+ * @brief Test Case 2: PC List using CartTest fixtrure
  */
 TEST_F(CartTest, pc_list) {
     Cart cart;
@@ -95,7 +104,7 @@ TEST_F(CartTest, pc_list) {
 }
 
 /**
- * @brief Test Case: Wardrobe List using CartTest fixrure
+ * @brief Test Case 3: Wardrobe List using CartTest fixture
  */
 TEST_F(CartTest, wardrobe_list) {
     Cart cart;
@@ -128,7 +137,7 @@ TEST_F(CartTest, wardrobe_list) {
 
     cart.setItemService(&service);
     cart.setItems(items);
-    
+
     // EXPECT a result with precision suitable for type DOUBLE
     EXPECT_DOUBLE_EQ(cart.getCartTotalAmount(), 2911.00);
 }
